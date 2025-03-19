@@ -10,3 +10,6 @@
 /package-lock.json
 /src/temp/
 /ossutil_output
+.pnpm-store
+pnpm-lock.yaml
+.next
