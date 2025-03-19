@@ -1,0 +1,12 @@
+.DS_Store
+.idea/
+.history/
+.vscode/
+.ossutil_output
+.ossutil_checkpoint
+/npm-debug.log
+/node_modules/
+/dist/
+/package-lock.json
+/src/temp/
+/ossutil_output
