@@ -43,23 +43,23 @@ import GithubHeatmap from '../githubheatmap/GithubHeatmap'
 
 const HeroSection = () => {
     const [mounted, setMounted] = useState(false)
-      const { resolvedTheme } = useTheme()
-      
-      useEffect(() => {
+    const { resolvedTheme } = useTheme()
+
+    useEffect(() => {
         setMounted(true)
-      }, [])
-    
-      // 在组件挂载前返回一个空的占位结构，避免闪烁
-      if (!mounted) {
+    }, [])
+
+    // 在组件挂载前返回一个空的占位结构，避免闪烁
+    if (!mounted) {
         return (
-          <section className="w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0">
-            
-          </section>
+            <section className="w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0">
+
+            </section>
         )
-      }
-      const isDarkMode = resolvedTheme === 'dark'
+    }
+    const isDarkMode = resolvedTheme === 'dark'
     return (
-        <section  className={"w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0 "}>
+        <section className={"w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0 "}>
             {/* Left Content */}
             <motion.div
                 className="max-w-lg space-y-4 text-center md:text-left"
@@ -71,27 +71,27 @@ const HeroSection = () => {
                     Hi! <span className="text-4xl">🖖</span>
                 </h1>
 
-                <p className={"text-lg " + `${isDarkMode ? 'text-gray-100' : 'text-gray-600'}` }>
+                <p className={"text-lg " + `${isDarkMode ? 'text-gray-100' : 'text-gray-600'}`}>
                     I'm a Java Developer<br />
                     Passionate about building scalable and efficient backend systems. Constantly learning and improving my skills.
                 </p>
                 <h2 className="text-5xl font-extrabold leading-tight">
-                    <GithubHeatmap />
+                    <GithubHeatmap theme={resolvedTheme} />
                 </h2>
-                <p className={"italic " + `${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`  }>"Code with clarity, scale with confidence."</p>
+                <p className={"italic " + `${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>"Code with clarity, scale with confidence."</p>
                 {/* Social Icons */}
                 <div className="flex justify-center md:justify-start space-x-4 text-2xl">
                     <a href="https://github.com/Kurok1" target="_blank" className="block font-semibold">
-                        <SiGithub color="#ddd" /> 
+                        <SiGithub color={isDarkMode ? '#ddd' : ''} />
                     </a>
                     <a href="mailto:khanc.dev@gmail.com" target="_blank" className="block font-semibold">
-                        <SiGmail color="#ddd" />
+                        <SiGmail color={isDarkMode ? '#ddd' : ''}  />
                     </a>
-                    <a href="https://bilibili.com" target="_blank" className="block font-semibold">
-                        <SiBilibili color="#ddd"/>
+                    <a href="https://space.bilibili.com/288392469" target="_blank" className="block font-semibold">
+                        <SiBilibili color={isDarkMode ? '#ddd' : ''}  />
                     </a>
                     <a href="https://www.youtube.com/channel/UCLwOOZE54csus9lrAMloIMQ" target="_blank" className="block font-semibold">
-                        <SiYoutube  color="#ddd"/>
+                        <SiYoutube color={isDarkMode ? '#ddd' : ''}  />
                     </a>
 
                 </div>

@@ -126,8 +126,11 @@ export default function NavPage() {
           <a href="/about" className="text-sm/6 font-semibold">
             About Me
           </a>
+          <button className="text-sm/6 font-semibold">
+            <ThemeToggle/>
+          </button>
         </PopoverGroup>
-        <ThemeToggle/>
+        
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className={'fixed inset-0 z-100'} />

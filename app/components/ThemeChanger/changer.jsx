@@ -17,17 +17,16 @@ export default function ThemeToggle() {
   }
 
   return (
-    <button
+    <span
       variant="ghost"
       size="icon"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-      className="rounded-full p-2"
     >
       {resolvedTheme === 'dark' ? (
         <Sun className="w-5 h-5 text-yellow-500" />
       ) : (
         <Moon className="w-5 h-5 text-gray-800" />
       )}
-    </button>
+    </span>
   );
 }
