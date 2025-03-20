@@ -17,7 +17,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { SiApachemaven, SiDocker, SiFiles, SiPrometheus, SiServerfault } from "react-icons/si";
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon} from '@heroicons/react/24/solid'
 import 'tailwindcss'
 const products = [
   { name: 'MAVEN', description: 'My Maven Repository', href: 'https://repo.kurok1.top', icon: SiApachemaven },
@@ -114,7 +114,7 @@ export default function NavPage() {
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                src="/it.svg"
                 className="h-8 w-auto"
               />
             </a>
