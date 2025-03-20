@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-
+import { useState, useEffect } from 'react'
+import { useTheme } from 'nextra-theme-docs'
 import {
     SiBilibili, SiYoutube,
     SiGithub, SiGmail
@@ -41,8 +42,24 @@ import {
 import GithubHeatmap from '../githubheatmap/GithubHeatmap'
 
 const HeroSection = () => {
+    const [mounted, setMounted] = useState(false)
+      const { resolvedTheme } = useTheme()
+      
+      useEffect(() => {
+        setMounted(true)
+      }, [])
+    
+      // 在组件挂载前返回一个空的占位结构，避免闪烁
+      if (!mounted) {
+        return (
+          <section className="w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0">
+            
+          </section>
+        )
+      }
+      const isDarkMode = resolvedTheme === 'dark'
     return (
-        <section  className="w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0">
+        <section  className={"w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0 "}>
             {/* Left Content */}
             <motion.div
                 className="max-w-lg space-y-4 text-center md:text-left"
@@ -50,36 +67,36 @@ const HeroSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <h1 className="text-3xl font-bold flex justify-center md:justify-start items-center gap-2">
+                <h1 className={"text-3xl font-bold flex justify-center md:justify-start items-center gap-2 " + `${isDarkMode ? 'text-zinc-50' : ''}`}>
                     Hi! <span className="text-4xl">🖖</span>
                 </h1>
 
-                <p className="text-lg text-gray-600">
+                <p className={"text-lg " + `${isDarkMode ? 'text-gray-100' : 'text-gray-600'}` }>
                     I'm a Java Developer<br />
                     Passionate about building scalable and efficient backend systems. Constantly learning and improving my skills.
                 </p>
                 <h2 className="text-5xl font-extrabold leading-tight">
                     <GithubHeatmap />
                 </h2>
-                <p className="italic text-gray-700">"Code with clarity, scale with confidence."</p>
+                <p className={"italic " + `${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`  }>"Code with clarity, scale with confidence."</p>
                 {/* Social Icons */}
                 <div className="flex justify-center md:justify-start space-x-4 text-2xl">
                     <a href="https://github.com/Kurok1" target="_blank" className="block font-semibold">
-                        <SiGithub />
+                        <SiGithub color="#ddd" /> 
                     </a>
                     <a href="mailto:khanc.dev@gmail.com" target="_blank" className="block font-semibold">
-                        <SiGmail />
+                        <SiGmail color="#ddd" />
                     </a>
                     <a href="https://bilibili.com" target="_blank" className="block font-semibold">
-                        <SiBilibili />
+                        <SiBilibili color="#ddd"/>
                     </a>
                     <a href="https://www.youtube.com/channel/UCLwOOZE54csus9lrAMloIMQ" target="_blank" className="block font-semibold">
-                        <SiYoutube />
+                        <SiYoutube  color="#ddd"/>
                     </a>
 
                 </div>
                 {/* Tech Stack Icons */}
-                <p className="text-gray-500">Tech Stacks : </p>
+                <p className={`${isDarkMode ? "text-gray-300" : "text-gray-500"}`}>Tech Stacks : </p>
                 <div className="grid grid-cols-4 md:grid-cols-12  gap-2 text-2xl justify-center md:justify-start">
                     <span><Java /></span>
                     <span><Golang /></span>
