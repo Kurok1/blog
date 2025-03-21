@@ -18,7 +18,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { SiApachemaven, SiDocker, SiFiles, SiPrometheus, SiServerfault } from "react-icons/si";
-import { ChevronDownIcon} from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import 'tailwindcss'
 import ThemeToggle from '../ThemeChanger/changer'
 const products = [
@@ -33,7 +33,7 @@ export default function NavPage() {
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { resolvedTheme } = useTheme()
-  
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -73,10 +73,15 @@ export default function NavPage() {
             <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
         </div>
+        <div className="flex lg:hidden">
+          <button className="text-sm/6 font-semibold">
+            <ThemeToggle />
+          </button>
+        </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <PopoverButton 
-            className="flex items-center gap-x-1 text-sm/6 font-semibold z-50"
+            <PopoverButton
+              className="flex items-center gap-x-1 text-sm/6 font-semibold z-50"
             >
               Tools
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none" />
@@ -127,10 +132,10 @@ export default function NavPage() {
             About Me
           </a>
           <button className="text-sm/6 font-semibold">
-            <ThemeToggle/>
+            <ThemeToggle />
           </button>
         </PopoverGroup>
-        
+
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className={'fixed inset-0 z-100'} />
@@ -152,6 +157,9 @@ export default function NavPage() {
               <span className="sr-only">Close menu</span>
               <XMarkIcon aria-hidden="true" className="size-6" />
             </button>
+            <button className="text-sm/6 font-semibold">
+              <ThemeToggle />
+            </button>
           </div>
           <div className={"mt-6 flow-root " + `${isDarkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'}`}>
             <div className="-my-6 divide-y divide-gray-500/10">
@@ -168,7 +176,7 @@ export default function NavPage() {
                         as="a"
                         target="_blank"
                         href={item.href}
-                        className={ "block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold "  + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}` }
+                        className={"block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
                       >
                         <item.icon aria-hidden="true" className="size-6 group-hover:text-indigo-600" />
                         {item.name}
@@ -191,6 +199,7 @@ export default function NavPage() {
               </div>
             </div>
           </div>
+
         </DialogPanel>
       </Dialog>
     </header>
