@@ -29,6 +29,10 @@ const products = [
   { name: 'Nacos', description: 'My Local Nacos Server', href: 'https://nacos.kurok1.top', icon: SiServerfault }
 ]
 
+const posts = [
+  { name: 'My First Post', href:'/blog/my'}
+]
+
 export default function NavPage() {
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -52,6 +56,7 @@ export default function NavPage() {
 
   return (
     <header className={`${isDarkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} z-50`}>
+      <div className="pointer-events-none fixed left-0 top-0 z-10 h-12 w-full bg-gray-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)] dark:bg-zinc-950" />
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -110,24 +115,35 @@ export default function NavPage() {
                   </div>
                 ))}
               </div>
-              {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                {callsToAction.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
-                  >
-                    <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-                    {item.name}
-                  </a>
-                ))}
-              </div> */}
             </PopoverPanel>
           </Popover>
 
           <a href="/docs" className="text-sm/6 font-semibold">
             Documents
           </a>
+          
+          <Popover className="relative">
+            <PopoverButton
+              className="flex items-center gap-x-1 text-sm/6 font-semibold z-50"
+            >
+              Posts
+              <ChevronDownIcon aria-hidden="true" className="size-5 flex-none" />
+            </PopoverButton>
+
+            <PopoverPanel
+              transition
+              className={`${isDarkMode ? 'bg-black' : 'bg-white'}` + " absolute top-full -left-8 z-100 mt-3 w-screen max-w-md overflow-hidden rounded-2xl ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"}
+            >
+              <div className="p-3">
+                {posts.map((item) => (
+                  <a className="block rounded-lg py-2 px-3 transition hover:bg-white/5" href={item.href}>
+                    <p className="font-semibold text-white">{item.name}</p>
+                  </a>
+                ))}
+              </div>
+            </PopoverPanel>
+          </Popover>
+
           <a href="/about" className="text-sm/6 font-semibold">
             About Me
           </a>
@@ -141,7 +157,7 @@ export default function NavPage() {
         <div className={'fixed inset-0 z-100'} />
         <DialogPanel className={"fixed inset-y-0 right-0 z-100 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 " + `${isDarkMode ? 'bg-black' : 'bg-white '}`}>
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
@@ -190,6 +206,25 @@ export default function NavPage() {
                 >
                   Documents
                 </a>
+                <Disclosure as="div" className="-mx-3">
+                  <DisclosureButton className={"group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}>
+                    Posts
+                    <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
+                  </DisclosureButton>
+                  <DisclosurePanel className="mt-2 space-y-2">
+                    {[...posts].map((item) => (
+                      <DisclosureButton
+                        key={item.name}
+                        as="a"
+                        href={item.href}
+                        className={"block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
+                      >
+                        {/* <item.icon aria-hidden="true" className="size-6 group-hover:text-indigo-600" /> */}
+                        {item.name}
+                      </DisclosureButton>
+                    ))}
+                  </DisclosurePanel>
+                </Disclosure>
                 <a
                   href="/about"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
