@@ -18,7 +18,7 @@
 由于读写锁绑定的资源状态是同一个，因此需要某种机制能同时表达读状态和写状态。
 
 在`ReentrantReadWriteLock`,采用了分段的方式计算读写状态，即将int类型的变量，前16位作为写状态的持有，后16位作为读状态的持有
-```Java
+```java
 
         /*
          * Read vs write count extraction constants and functions.
@@ -46,7 +46,7 @@
 [AQS](AQS.md)已经完成实现了独占和共享模式的等待入队，因此这里只需要实现独占和共享模式下的尝试加锁逻辑即可
 
 ### 独占(写锁)
-```Java
+```java
         protected final boolean tryAcquire(int acquires) {
             /*
              * Walkthrough:
@@ -90,7 +90,7 @@
 ```
 
 ### 共享(读锁)
-```Java
+```java
         protected final int tryAcquireShared(int unused) {
             /*
              * Walkthrough:
@@ -169,7 +169,7 @@
 
 ## 释放锁
 ### 独占模式(写锁释放)
-```Java
+```java
         protected final boolean tryRelease(int releases) {
             if (!isHeldExclusively())//是否是当前线程持有锁
                 throw new IllegalMonitorStateException();
@@ -190,7 +190,7 @@
         }
 ```
 ### 共享模式(读锁释放)
-```Java
+```java
         protected final boolean tryReleaseShared(int unused) {
             //释放前，先根据ThreadLocal找到对应读线程，持有计数-1
             Thread current = Thread.currentThread();

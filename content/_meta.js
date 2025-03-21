@@ -1,6 +1,7 @@
 export default {
     index: 'Weclome To My Documents',
-    Java: 'Java'
+    Java: 'Java',
+    Redis: 'Redis'
     // 'get-started': '',
     // features: 'Features',
     // themes: 'Themes',
