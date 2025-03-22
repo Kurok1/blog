@@ -33,6 +33,7 @@
     "**/*.tsx",
     "app/docs/[[...mdxPath]]/page.jsx",
     "next-env.d.ts",
+    "public/fonts/*",
     ".next/types/**/*.ts", "app/components/ThemeChanger/changer.jsx" ],
   "exclude": [
     "node_modules"
