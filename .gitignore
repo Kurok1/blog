@@ -12,4 +12,4 @@
 /ossutil_output
 .pnpm-store
 pnpm-lock.yaml
-.next
+.next/
