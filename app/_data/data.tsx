@@ -38,7 +38,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle: { background: 'oklch(0.917 0.08 205.041)' },
         contentArrowStyle: { borderRight: '7px solid oklch(0.917 0.08 205.041)' },
         iconStyle: { background: 'rgb(232, 236, 239)', color: '#fff' },
-        icon: BirthIcon,
+        icon: <BirthIcon/>,
     },
     {
         title: "As A Student",
@@ -48,7 +48,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle:{background: 'oklch(0.828 0.189 84.429)'},
         contentArrowStyle: {borderRight: '7px solid oklch(0.828 0.189 84.429)'},
         iconStyle: { background: 'rgb(33, 150, 243)', color: '#fff' },
-        icon: PrimarySchool,
+        icon: <PrimarySchool/>,
     },
     {
         title: "Become Java Developer",
@@ -58,7 +58,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle:{background: 'oklch(0.828 0.189 84.429)'},
         contentArrowStyle: { borderRight: '7px solid oklch(0.828 0.189 84.429)' },
         iconStyle: { background: 'rgb(33, 150, 243)', color: '#fff' },
-        icon: JavaIcon,
+        icon: <JavaIcon/>,
     },
     {
         title: "Become Web Developer",
@@ -68,7 +68,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle:{background: 'oklch(0.828 0.189 84.429)'},
         contentArrowStyle: { borderRight: '7px solid oklch(0.828 0.189 84.429)' },
         iconStyle: { background: 'rgb(33, 150, 243)', color: '#fff' },
-        icon: JavaScriptIcon,
+        icon: <JavaScriptIcon/>,
     },
     {
         title: "Entering The Workplace",
@@ -78,7 +78,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle:{background: 'oklch(0.718 0.202 349.761)'},
         contentArrowStyle: { borderRight: '7px solid oklch(0.718 0.202 349.761)' },
         iconStyle: { background: 'rgb(233, 30, 99)', color: '#fff' },
-        icon: Work,
+        icon: <Work/>,
     },
     {
         title: "Job Hopping",
@@ -88,7 +88,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle:{background: 'oklch(0.718 0.202 349.761)'},
         contentArrowStyle: { borderRight: '7px solid oklch(0.718 0.202 349.761)' },
         iconStyle: { background: 'rgb(233, 30, 99)', color: '#fff' },
-        icon: Work,
+        icon: <Work/>,
     },
     {
         title: "To Future",
@@ -98,7 +98,7 @@ const TIME_LINES : Array<TimedItemProps> =  [
         contentStyle:{ background: 'rgb(65, 198, 191)' },
         contentArrowStyle: { borderRight: '7px solid rgb(65, 198, 191)' },
         iconStyle: { background: 'rgb(222, 212, 124)', color: '#fff' },
-        icon: FutureIcon,
+        icon: <FutureIcon/>,
     }
 ]
 

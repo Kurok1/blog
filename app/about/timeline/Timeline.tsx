@@ -13,7 +13,7 @@ export default function TimeLine({data}: {data: Array<TimedItemProps>}) {
                     contentArrowStyle={item.contentArrowStyle}
                     date={item.date}
                     iconStyle={item.iconStyle}
-                    icon={item.icon? <item.icon /> : undefined}
+                    icon={item.icon ? item.icon : undefined}
                 >
                     <h3 className="vertical-timeline-element-title text-sky-950">{item.title}</h3>
                     <h4 className="vertical-timeline-element-subtitle  text-sky-950">{item.position}</h4>

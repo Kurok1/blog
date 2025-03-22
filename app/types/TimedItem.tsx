@@ -10,7 +10,7 @@ interface TimedItemProps {
     contentStyle: any;
     contentArrowStyle: any;
     iconStyle: any;
-    icon?: React.FC | React.ReactElement;
+    icon?: React.ReactNode;
 }
 
 export type {
