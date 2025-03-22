@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" />
-      <body>
+      <body className="font-propo">
         <Layout
           banner={<div></div>}
           navbar={<NavPage />}

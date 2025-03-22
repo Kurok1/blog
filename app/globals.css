@@ -6,7 +6,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-propo: "Propo";
+
 }
 
 @theme inline {
@@ -14,7 +14,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-propo: "Propo";
+  --font-lxgw: "LXGW";
   
+}
+
+body {
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +29,42 @@
     --foreground: #ededed;
   }
 }
+
+@font-face {
+  font-family: 'Propo';
+  src: url('/fonts/0xProtoNerdFontPropo-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW';
+  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+}
+
+
+/* 为较小屏幕设备设置字体大小 */
+@media (max-width: 600px) {
+  body {
+    font-size: 4.8vw;
+  }
+}
+
+/* 为中等屏幕设备设置字体大小 */
+@media (min-width: 601px) and (max-width: 1200px) {
+  body {
+    font-size: 2vw;
+  }
+}
+
+/* 为较大屏幕设备设置字体大小 */
+@media (min-width: 1201px) {
+  body {
+    font-size: 1vw;
+  }
+}
+
 
 .react-calendar-heatmap .color-dark-scala-empty {
   fill: oklch(0.372 0.044 257.287)
