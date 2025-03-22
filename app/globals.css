@@ -1,7 +1,20 @@
+@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Propo';
+  src: url('/fonts/0xProtoNerdFontPropo-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW';
+  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,11 +32,11 @@
 }
 
 .font-propo {
-  font-family: var(--font-propo);
+  font-family: "Propo";
 }
 
 .font-lxgw {
-  font-family: var(--font-lxgw);
+  font-family: "LXGW";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,19 +44,6 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-@font-face {
-  font-family: 'Propo';
-  src: url('/fonts/0xProtoNerdFontPropo-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 200 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LXGW';
-  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
 }
 
 
