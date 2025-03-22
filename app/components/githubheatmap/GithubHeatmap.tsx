@@ -4,7 +4,7 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import 'tailwindcss'
 import "react-calendar-heatmap/dist/styles.css";
 
-export default function GithubHeatmap({theme}:{theme:string}) : React.ReactElement {
+export default function GithubHeatmap({theme}:{theme:string|undefined}) : React.ReactElement {
   const [contributions, setContributions] = useState([]);
   useEffect(() => {
     githubContributes()
