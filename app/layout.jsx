@@ -4,25 +4,23 @@ import NavPage from './components/Nav/nav'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
+import 'tailwindcss'
 
 
 export const metadata = {
-  metadataBase: new URL('https://nextra.site'),
+  metadataBase: new URL('https://kurok1.top'),
   title: {
-    template: '%s - Nextra'
+    template: '%s'
   },
-  description: 'Nextra: the Next.js site builder',
-  applicationName: 'Nextra',
+  description: 'Kuroky Han\'s WebSite',
+  applicationName: 'Kuroky Han\'s WebSite',
   generator: 'Next.js',
   appleWebApp: {
-    title: 'Nextra'
+    title: 'NeKuroky Han\'s WebSite'
   },
   other: {
     'msapplication-TileImage': '/ms-icon-144x144.png',
     'msapplication-TileColor': '#fff'
-  },
-  twitter: {
-    site: 'https://nextra.site'
   }
 }
 
