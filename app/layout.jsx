@@ -29,7 +29,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" />
-      <body className="font-propo">
+      <body>
         <Layout
           banner={<div></div>}
           navbar={<NavPage />}
@@ -40,7 +40,7 @@ export default async function RootLayout({ children }) {
           editLink={null}
           navigation={false}
         >
-          <div className="relative isolate px-6 pt-14 lg:px-8">
+          <div  className="font-propo relative isolate px-6 pt-14 lg:px-8">
             <div
               aria-hidden="true"
               className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl"
