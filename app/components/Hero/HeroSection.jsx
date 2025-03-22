@@ -59,7 +59,7 @@ const HeroSection = () => {
     }
     const isDarkMode = resolvedTheme === 'dark'
     return (
-        <section className={"w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0 "}>
+        <section className={"w-screen flex flex-col md:flex-row justify-between p-10 max-w-6xl mx-auto space-y-10 md:space-y-0 font-propo "}>
             {/* Left Content */}
             <motion.div
                 className="max-w-lg space-y-4 text-center md:text-left"
@@ -81,16 +81,16 @@ const HeroSection = () => {
                 <p className={"italic " + `${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>"Code with clarity, scale with confidence."</p>
                 {/* Social Icons */}
                 <div className="flex justify-center md:justify-start space-x-4 text-2xl">
-                    <a href="https://github.com/Kurok1" target="_blank" className="block font-semibold">
+                    <a href="https://github.com/Kurok1" target="_blank" className="block font-propo">
                         <SiGithub color={isDarkMode ? '#ddd' : ''} />
                     </a>
-                    <a href="mailto:khanc.dev@gmail.com" target="_blank" className="block font-semibold">
+                    <a href="mailto:khanc.dev@gmail.com" target="_blank" className="block font-propo">
                         <SiGmail color={isDarkMode ? '#ddd' : ''}  />
                     </a>
-                    <a href="https://space.bilibili.com/288392469" target="_blank" className="block font-semibold">
+                    <a href="https://space.bilibili.com/288392469" target="_blank" className="block font-propo">
                         <SiBilibili color={isDarkMode ? '#ddd' : ''}  />
                     </a>
-                    <a href="https://www.youtube.com/channel/UCLwOOZE54csus9lrAMloIMQ" target="_blank" className="block font-semibold">
+                    <a href="https://www.youtube.com/channel/UCLwOOZE54csus9lrAMloIMQ" target="_blank" className="block font-propo">
                         <SiYoutube color={isDarkMode ? '#ddd' : ''}  />
                     </a>
 

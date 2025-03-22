@@ -9,7 +9,7 @@ import FutureIcon from './Future'
 
 export default function TimeLine() {
     return (
-        <VerticalTimeline>
+        <VerticalTimeline className='font-propo'>
             <VerticalTimelineElement
                 className="vertical-timeline-element--work"
                 contentStyle={{ background: 'oklch(0.917 0.08 205.041)' }}

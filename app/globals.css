@@ -13,6 +13,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-propo: "Propo";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,9 +23,19 @@
   }
 }
 
+@font-face {
+  font-family: 'Propo';
+  src: 
+       url('/fonts/0xProtoNerdFontPropo-Regular.ttf') format('truetype');
+       font-style: normal;
+       font-weight: 200 700;
+       font-display: swap;
+       font-size: 16;
+}
+
 body {
   /* color: var(--foreground); */
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 .react-calendar-heatmap .color-dark-scala-empty {

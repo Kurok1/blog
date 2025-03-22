@@ -1,0 +1,31 @@
+body {
+    font-family: 'LXGW';
+}
+
+/* 为较小屏幕设备设置字体大小 */
+@media (max-width: 600px) {
+    body {
+        font-size: 4.8vw;
+    }
+}
+
+/* 为中等屏幕设备设置字体大小 */
+@media (min-width: 601px) and (max-width: 1200px) {
+    body {
+        font-size: 2vw;
+    }
+}
+
+/* 为较大屏幕设备设置字体大小 */
+@media (min-width: 1201px) {
+    body {
+        font-size: 1vw;
+    }
+}
+
+@font-face {
+    font-family: 'LXGW';
+    src:
+        url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+
+}

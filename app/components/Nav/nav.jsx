@@ -79,14 +79,14 @@ export default function NavPage() {
           </button>
         </div>
         <div className="flex lg:hidden">
-          <button className="text-sm/6 font-semibold">
+          <button className="text-sm/6 font-propo">
             <ThemeToggle />
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
             <PopoverButton
-              className="flex items-center gap-x-1 text-sm/6 font-semibold z-50"
+              className="flex items-center gap-x-1 text-sm/6 font-propo z-50"
             >
               Tools
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none" />
@@ -106,7 +106,7 @@ export default function NavPage() {
                       <item.icon aria-hidden="true" className="size-6 group-hover:text-indigo-600" />
                     </div>
                     <div className="flex-auto">
-                      <a href={item.href} target="_blank" className="block font-semibold">
+                      <a href={item.href} target="_blank" className="block font-propo">
                         {item.name}
                         <span className="absolute inset-0" />
                       </a>
@@ -118,13 +118,13 @@ export default function NavPage() {
             </PopoverPanel>
           </Popover>
 
-          <a href="/docs" className="text-sm/6 font-semibold">
+          <a href="/docs" className="text-sm/6 font-propo">
             Documents
           </a>
           
           <Popover className="relative">
             <PopoverButton
-              className="flex items-center gap-x-1 text-sm/6 font-semibold z-50"
+              className="flex items-center gap-x-1 text-sm/6 font-propo z-50"
             >
               Posts
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none" />
@@ -132,22 +132,22 @@ export default function NavPage() {
 
             <PopoverPanel
               transition
-              className={`${isDarkMode ? 'bg-black' : 'bg-white'}` + " absolute top-full -left-8 z-100 mt-3 w-screen max-w-md overflow-hidden rounded-2xl ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"}
+              className={`${isDarkMode ? 'bg-gray-700' : 'bg-white'}` + " absolute top-full -left-8 z-100 mt-3 w-screen max-w-md overflow-hidden rounded-2xl ring-1 shadow-lg ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"}
             >
               <div className="p-3">
                 {posts.map((item) => (
                   <a className="block rounded-lg py-2 px-3 transition hover:bg-white/5" href={item.href}>
-                    <p className="font-semibold text-white">{item.name}</p>
+                    <p className="font-propo">{item.name}</p>
                   </a>
                 ))}
               </div>
             </PopoverPanel>
           </Popover>
 
-          <a href="/about" className="text-sm/6 font-semibold">
+          <a href="/about" className="text-sm/6 font-propo">
             About Me
           </a>
-          <button className="text-sm/6 font-semibold">
+          <button className="text-sm/6 font-propo">
             <ThemeToggle />
           </button>
         </PopoverGroup>
@@ -173,7 +173,7 @@ export default function NavPage() {
               <span className="sr-only">Close menu</span>
               <XMarkIcon aria-hidden="true" className="size-6" />
             </button>
-            <button className="text-sm/6 font-semibold">
+            <button className="text-sm/6 font-propo">
               <ThemeToggle />
             </button>
           </div>
@@ -181,7 +181,7 @@ export default function NavPage() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className={"group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}>
+                  <DisclosureButton className={"group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-propo " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}>
                     Tools
                     <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                   </DisclosureButton>
@@ -192,7 +192,7 @@ export default function NavPage() {
                         as="a"
                         target="_blank"
                         href={item.href}
-                        className={"block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
+                        className={"block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-propo " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
                       >
                         <item.icon aria-hidden="true" className="size-6 group-hover:text-indigo-600" />
                         {item.name}
@@ -202,12 +202,12 @@ export default function NavPage() {
                 </Disclosure>
                 <a
                   href="/docs"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-propo hover:bg-gray-50"
                 >
                   Documents
                 </a>
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className={"group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}>
+                  <DisclosureButton className={"group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-propo " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}>
                     Posts
                     <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                   </DisclosureButton>
@@ -217,7 +217,7 @@ export default function NavPage() {
                         key={item.name}
                         as="a"
                         href={item.href}
-                        className={"block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
+                        className={"block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-propo " + `${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'}`}
                       >
                         {/* <item.icon aria-hidden="true" className="size-6 group-hover:text-indigo-600" /> */}
                         {item.name}
@@ -227,7 +227,7 @@ export default function NavPage() {
                 </Disclosure>
                 <a
                   href="/about"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-propo hover:bg-gray-50"
                 >
                   About Me
                 </a>
