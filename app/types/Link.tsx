@@ -1,4 +1,4 @@
-import {IconType} from "react-icons/lib/iconBase";
+
 
 interface LinkProps {
     title: string;
@@ -10,7 +10,7 @@ interface LinkItemProps {
     name: string,
     description: string,
     href: string,
-    icon: IconType,
+    icon: any,
     target: string
 }
 
