@@ -1,5 +1,5 @@
 'use client'
-import 'tailwindcss'
+
 export default function LayoutBlogPost({
   children,
 }: {

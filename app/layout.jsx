@@ -4,7 +4,6 @@ import NavPage from './components/Nav/nav'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
-import 'tailwindcss'
 
 
 export const metadata = {
