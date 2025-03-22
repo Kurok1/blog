@@ -4,13 +4,12 @@ import NavPage from './components/Nav/nav'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
+import React from "react";
 
 
 export const metadata = {
   metadataBase: new URL('https://kurok1.top'),
-  title: {
-    template: '%s'
-  },
+  title: {default: "Kuroky Han\'s WebSite", template: '%s'},
   description: 'Kuroky Han\'s WebSite',
   applicationName: 'Kuroky Han\'s WebSite',
   generator: 'Next.js',
@@ -23,7 +22,9 @@ export const metadata = {
   }
 }
 
-export default async function RootLayout({ children }) {
+
+export default async function RootLayout({children,}: { children: React.ReactNode }) {
+
   const pageMap = await getPageMap()
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>

@@ -4,12 +4,7 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import 'tailwindcss'
 import "react-calendar-heatmap/dist/styles.css";
 
-const indexMap = [
-  50,100,200,300,400,500,
-  600,700,800,900,950
-]
-
-export default function GithubHeatmap(props) {
+export default function GithubHeatmap({theme}:{theme:string}) : React.ReactElement {
   const [contributions, setContributions] = useState([]);
   useEffect(() => {
     githubContributes()
@@ -20,7 +15,7 @@ export default function GithubHeatmap(props) {
       });
   }, []);
 
-  const isDark = props.theme === 'dark'
+  const isDark = theme === 'dark'
   return (
     <CalendarHeatmap
       startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}

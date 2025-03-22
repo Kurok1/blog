@@ -31,10 +31,10 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "app/docs/[[...mdxPath]]/page.jsx",
+    "app/docs/[[...mdxPath]]/page",
     "next-env.d.ts",
     "public/fonts/*",
-    ".next/types/**/*.ts", "app/components/ThemeChanger/changer.jsx" ],
+    ".next/types/**/*.ts" ],
   "exclude": [
     "node_modules"
   ]

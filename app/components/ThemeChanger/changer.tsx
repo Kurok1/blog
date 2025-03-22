@@ -18,8 +18,6 @@ export default function ThemeToggle() {
 
   return (
     <span
-      variant="ghost"
-      size="icon"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {resolvedTheme === 'dark' ? (
