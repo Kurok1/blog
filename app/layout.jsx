@@ -4,8 +4,7 @@ import NavPage from './components/Nav/nav'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
-import "./globals.css";
-import "./style.css"
+
 
 export const metadata = {
   metadataBase: new URL('https://nextra.site'),

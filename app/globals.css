@@ -24,10 +24,6 @@
   }
 }
 
-.font-prop {
-  font-family: 'Propo'
-}
-
 .react-calendar-heatmap .color-dark-scala-empty {
   fill: oklch(0.372 0.044 257.287)
 }
