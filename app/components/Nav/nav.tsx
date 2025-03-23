@@ -9,6 +9,7 @@ import ThemeToggle from '../ThemeChanger/changer'
 import DropItemLink from "../DropItemLink/Link";
 import MobileLink from "../MobileDropItemLink/MobileLink";
 import {POSTS, TOOLS} from "@/app/_data/data"
+import Intelligent from '../icons/Intelligent'
 
 const NavPage : React.FC = () => {
   const [mounted, setMounted] = useState(false)
@@ -61,6 +62,9 @@ const NavPage : React.FC = () => {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+          <a href="https://chat.kurok1.top" target='_blank' className="text-sm/6 font-propo">
+            <Intelligent/>
+          </a>
           <DropItemLink theme={resolvedTheme} data={TOOLS} title={"Tools"} />
           <a href="/docs" className="text-sm/6 font-propo">
             Documents
