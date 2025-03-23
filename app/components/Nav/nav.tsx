@@ -62,9 +62,6 @@ const NavPage : React.FC = () => {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          <a href="https://chat.kurok1.top" target='_blank' className="text-sm/6 font-propo">
-            <Intelligent/>
-          </a>
           <DropItemLink theme={resolvedTheme} data={TOOLS} title={"Tools"} />
           <a href="/docs" className="text-sm/6 font-propo">
             Documents
@@ -72,6 +69,9 @@ const NavPage : React.FC = () => {
           <DropItemLink theme={resolvedTheme} data={POSTS} title={"Posts"}/>
           <a href="/about" className="text-sm/6 font-propo">
             About Me
+          </a>
+          <a href="https://chat.kurok1.top" target='_blank' className="text-sm/6 font-propo">
+            <Intelligent size={25}/>
           </a>
           <button className="text-sm/6 font-propo">
             <ThemeToggle />
