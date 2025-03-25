@@ -2,5 +2,5 @@ export default {
     index: {
         display: 'hidden'
     },
-    my: "日常记录"
+    my: "为什么会想着写Blog？"
 }
