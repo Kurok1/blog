@@ -1,0 +1,161 @@
+# 我作为一个Java开发者，谈谈我对当下的Java开发环境的看法
+> 笔者水平有限，仅做探讨，欢迎交流
+
+毫无疑问，Java依然是目前世界上最流行的编程语言之一。
+
+Java在过去20多年间，几乎垄断了企业应用的开发市场，无论是大型互联网公司还是传统企业，Java都是他们的首选。但随着云计算时代的到来，云原生技术的普及，Java的地位开始受到挑战。
+
+挑战者之中不乏有新兴编程语言，比如Go、Rust、Kotlin（安卓领域）等，这些语言在某些方面有着明显的优势，比如性能、开发效率等。同时，Python、JavaScript等老牌语言也在各自领域不断发展壮大。可以看到，在目前的程序开发中，Java可能并不会是大部分开发者的首选语言，大部分开发者认为的原因有以下几点：
+1. **Java语言本身的缺陷，比如冗长的代码、繁琐的语法等，这些问题在新兴语言中得到了很好的解决。**
+2. **Java的开发效率相对较低，尤其是在一些小型项目上，Java的开发效率远不如Python、JavaScript等语言**
+3. **庞大的资源占用，JVM虚拟机为Java开发者带来了方便的跨平台特性，但这也成为了资源占用的罪魁祸首**
+4. **Java的生态系统虽然庞大，但是也显得臃肿，很多时候开发者需要花费大量时间在各种框架、库的学习上**
+
+臃肿、落后、不思进取，这些词语似乎已经成为了Java的代名词。尤其在AI技术兴起的今天，选用Java似乎成为了一种原罪，年轻的开发者们更倾向于摆脱传统工程软件开发的束缚，追求自由便捷的开发体验。
+
+在此，我们先不讨论对与错，不妨将视角打开，看看Java的困境究竟在何处？
+
+## 语法结构臃肿，冗长的代码，到底是谁的问题？
+许多Java开发者都会抱怨Java语言的冗长，比如一个简单的服务端程序，可能需要几十行代码，而在其他语言中，可能只需要几行代码就可以完成。
+比如，一个简单的HTTP服务端程序， 任何请求都返回`Hello World`，Java代码如下：
+```java showLineNumbers copy
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpExchange;
+
+public class HelloWorldServer {
+    public static void main(String[] args) throws IOException {
+        // Create an HTTP server that listens on port 8000
+        //注意，这里使用的sun包下的HttpServer，在高版本jdk可能会被移除
+        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+
+        // Define the handler for the root context
+        server.createContext("/", new HelloHandler());
+
+        // Start the server
+        server.setExecutor(null); // creates a default executor
+        server.start();
+        System.out.println("Server started on port 8000");
+    }
+
+    // Define a handler that responds with "Hello, World!"
+    static class HelloHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            String response = "Hello, World!";
+            exchange.sendResponseHeaders(200, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        }
+    }
+}
+```
+而同样的功能，用go则变得非常简单
+```go showLineNumbers copy
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, World!")
+}
+
+func main() {
+	http.HandleFunc("/", helloHandler)
+	fmt.Println("Server started on port 8000")
+	if err := http.ListenAndServe(":8000", nil); err != nil {
+		fmt.Println("Error starting server:", err)
+	}
+}
+```
+注意，Java的代码还是忽略了异常的写法，实际加上异常后，Java代码会更加冗长。
+
+当然，程序执行效果与代码长度是无关的，对用户来说只关心其对外的功能即可。
+但是，代码的冗长会让开发者疲惫，开发者不得不记住更多的API来驱动自己的代码（当然有了AI这种情况会好很多）。
+
+我们需要明白的是，Java是一门纯面向对象的编程语言，面向对象讲究设计原则，比如单一职责原则、开闭原则、里氏替换原则等等，这些原则在Java中得到了很好的体现，但是与之对应的，代码必然会变得更加复杂冗长。
+
+更何况，我们无法保障所有的开发者都有足够的设计功底去设计他们的代码结构，我们必须得承认面向对象编程的上限足够高，但是下限也足够低，一段简单的功能，在面向对象环境下需要设计类，设计领域，设计职责，然后创建具体对象，再由对象执行具体操作，稍有不慎就是一段屎山代码。
+与之相比，面向过程就直接简单明了，需要什么功能直接实现即可。
+
+近些年来，函数式编程等新兴编程范式逐渐流行的原因之一，就在于面向对象编程被滥用，一个没有足够设计功底的开发人员去开发面向对象的代码，往往会变成为了面向对象开发而开发，比如经典的“面向接口编程”：
+>在系统分析和架构中，分清层次和依赖关系，每个层次不是直接向其上层提供服务（即不是直接实例化在上层中），而是通过定义一组接口，仅向上层暴露其接口功能，上层对于下层仅仅是接口依赖，而不依赖具体类。
+
+面向接口编程几乎成为了Java开发的一个事实标准，`Controller-Service-Dao`结构在Java-Web项目中深入人心，每一层拥有一个接口和与之对应实现，开发人员在面对这种冗余实现时往往振振有词，却无法解释为什么要这样做。
+> 为什么要这样做？为了解耦，为了可扩展，为了可维护，为了可测试，为了...
+
+好像大师们的一切理论都是圣旨，可实际上呢？他们并没有理解大师们真正的意图，只是在模仿，而这种模仿往往会变成为了一种套路，一种不知所云的套路。
+
+我们重新理解下面向接口编程，接口的本质是什么？是契约，是一种规范，是一种约定，这是一个很宽泛的概念，你可以设计一个抽象类为接口，也可以设计实现类为一个，甚至是一段函数注释文档。接口的意义在于规范调用方和实现方的通信，只要能实现这个目的，就是好的接口，而不是拘泥于`interface`。
+
+> 面向对象的弊病，知乎上有篇回答写的很好，笔者很推崇。
+> **面向对象编程的弊端是什么？ - Milo Yip的回答 - 知乎** https://www.zhihu.com/question/20275578/answer/27046327
+
+所以问题根源不在Java语言本身，而在于我们对于OOP的理解，以及我们对于代码的设计。
+新生代语言，如Go等，引入了函数式编程等特性，使得代码更加简洁，开发者可以专注于功能开发，但是这并不意味着Java就是落后的。落后的是程序开发者，而不是语言本身。
+
+我们要注意，函数式编程等编程范式，带来的是编程思想上的变更，而不是语言本身的优劣。难道函数式编程就写不出屎山代码了吗？非也，所以**问题的核心在于写代码的人，而非语言本身**。
+
+## 云原生时代的挑战
+Java兴起的原因在于虚拟机技术，在虚拟机技术兴起之前，传统编程语言编写的代码是无法跨平台运行的，而Java的出现，使得程序员可以编写一次代码，到处运行，这是Java的优势之一。
+
+其实现逻辑就是在代码执行和操作系统直接加入了一层虚拟机，跨平台的适配工作交给虚拟机完成，开发者只关心代码编写即可。
+
+毫无疑问这是一项跨时代的技术，得益于虚拟机技术，大幅度减少了开发者适配多平台的难度。但是随着容器技术的兴起，Docker，K8s等技术成为运维部署的事实标准，Java在跨平台的优势荡然无存。
+
+容器技术的兴起，使得程序的运行环境变得更加统一，不再需要虚拟机的适配，程序员只需要将程序打包成容器，然后在任何支持容器的环境中运行即可，这种方式大大减少了程序的运行环境适配工作。
+此时虚拟机技术就变得不在那么重要了，甚至说虚拟机技术拖累了程序执行的效率，在能保证单一执行环境的情况下，虚拟机技术显得多余。
+
+再者，Java程序的资源占用一直是个问题，虚拟机的启动时间长，占用内存大，这在云计算时代显得尤为突出，资源的高效利用是云计算的核心，而Java的资源占用显然不符合这一要求。
+例如：一个简单的`Hello World`程序在Java启动时需要加载超过300个类，这样的资源占用在云计算时代显然是不可接受的。
+>It increases the amount of computation—and time—to start up an application. For example, the simple “Hello, World!” application requires more than 300 classes to be initialized.
+>https://www.graalvm.org/latest/reference-manual/native-image/optimizations-and-performance/ClassInitialization/
+
+但好在Java社区也意识到了这一点，Java 9引入了模块化系统，Java 11引入了轻量级JVM，Java 14引入了JEP 345，JEP 331等特性，这些特性都是为了提高Java程序的性能，降低资源占用。
+
+GraalVM的出现，使得Java程序可以编译成本地代码，大幅度提高了Java程序的执行效率，降低了资源占用，这些都是Java社区为了适应云计算时代所做的努力。
+
+笔者相信，在不久的将来，，Java程序的资源占用会更低，执行效率会更高，Java程序会更加适应云计算时代的需求。
+
+## AI时代Java真的不行了吗？
+近年来，AI技术的兴起，使得Python等语言成为了AI开发的首选。Java成为了被抛弃的孩子，AI领域的发展似乎与Java无关。
+
+但是，我们要明白，AI技术的兴起并不意味着Java就不行了，AI技术倾向于Python的原因在于Python的生态系统更加完善，有更多的AI库，更多的AI框架，更多的AI工具，这使得Python成为了AI开发的首选。
+
+而Java的开发生态倾向于企业应用开发，Python与Java的侧重点是不同的。Python能在AI领域大放异彩的原因在于积累了大量相关领域开发者，他们共同构建了一个完整的生态。同理Java在企业应用开发领域也构建了一个完整的生态。
+他们二者都是在各自领域发光发热，如果真的要比较，只能说AI领域比这几年比企业应用开发领域更加热门，话题度更高。
+
+Java在AI领域举步维艰，但同样的Python在企业应用开发领域同样也是举步维艰。但不代表双方干不了对方的活。
+
+Python在AI应用层面的开发，Java同样能做，只是语法稍微复杂点；Python同样能进行大型企业应用开发，就是后期维护困难点。二者都没有完全的优势，只是在各自领域有更多的积累。
+> 真要说有什么是不可替代的，那应该只有C/C++了，因为他们是最底层的高级语言，其他语言都是在他们的基础上发展的。
+C/C++干不了的，那就只能找汇编了。汇编解决不了的，那就是计算机也解决不了的。
+
+## Java开发者应该看清的现实
+伴随着经济下行，大量Java开发者失业，业界出现了“Java不行了”这样的声音，尤其经过大量不良自媒体的渲染，Java开发者的未来似乎一片黯淡。
+
+但是，我们要看到，Java并不是万能的，Java并不是所有领域的首选，Java并不是所有项目的最佳选择。从编程语言的发展历史来看，没有什么编程语言是不可或缺不可替代的，唯一替代不了的，只有编程的人。
+
+于是，我们发现有部分Java开发者研究出了一种所谓“防御性编程”：
+1. 代码不加注释
+2. 命名直接使用a，b，c等等毫无含义的变量，大大增加了代码维护的难度；
+3. 代码结构被破坏，函数直接随意的相互调用，极大的破坏高内聚低耦合；
+4. 代码预留后门；
+...
+
+当然也可以理解成一种“报复性编程”。笔者不敢苟同这种方式的正确。
+
+首先，被裁员被淘汰是资本考量的结果，并不会因为你维护的代码别人维护不了而保留你，这种方式只会让你的同事更加痛恨你，让你的代码更加难以维护，最终还是会被淘汰。
+
+其次，这种方式并不会给开发人员带来所谓的“护城河”，这是一种典型的“职场老油条”式的做法，最终该淘汰还是一样淘汰，只是在淘汰之前，给自己和他人带来了更多的麻烦。
+我不认为大多数程序员都有什么“技术护城河”，或者说大多数行业本质都没有所谓的“护城河”，唯一的护城河就是自己的能力，自己的学识，自己的经验，自己的人脉。
+
+最后，打铁还需自身硬，僧（程序员）多粥（就业机会）少的时代，作为技术人，更多的是尽可能沉淀自己，转“防御性编程” 为 防御性学习，就算某天中招被裁，只要技术能力过硬，也一定能再找到一份好工作。
+> “投资自己才是最大的财富，不要把时间浪费在这些无意义的事情上。”
