@@ -21,8 +21,8 @@ const TOOLS : Array<LinkItemProps> = [
 
 const POSTS : Array<LinkItemProps> =  [
     {
-        name: 'My First Post',
-        href: '/blog/my',
+        name: '当下Java环境的思考',
+        href: '/blog/2025/javaer_future',
         description: "",
         icon: null,
         target: ""
