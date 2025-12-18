@@ -18,7 +18,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
     "motion": "^12.5.0",
-    "next": "15.2.3",
+    "next": "15.2.8",
     "nextra": "4.2.16",
     "nextra-theme-docs": "4.2.16",
     "outline": "link:@heroicons/react/24/outline",
