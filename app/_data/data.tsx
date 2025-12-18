@@ -1,5 +1,5 @@
 import {LinkItemProps} from "@/app/types/Link";
-import {SiApachemaven, SiDocker, SiFiles, SiPrometheus, SiServerfault} from "react-icons/si";
+import {SiApachemaven, SiDocker, SiTextpattern, SiPrometheus, SiServerfault} from "react-icons/si";
 import {TimedItemProps} from "@/app/types/TimedItem";
 import {
     BirthIcon,
@@ -13,9 +13,9 @@ import {JavaScriptIcon} from "nextra/icons";
 const TOOLS : Array<LinkItemProps> = [
     { name: 'MAVEN', description: 'My Maven Repository', href: 'https://repo.kurok1.top', icon: SiApachemaven, target: '_blank' },
     { name: 'Docker Registry', description: 'My Docker Registry', href: 'https://registry.kurok1.top', icon: SiDocker, target: '_blank' },
-    { name: 'FileManager', description: 'My Disk', href: 'https://files.kurok1.top', icon: SiFiles, target: '_blank' },
     { name: 'Prometheus', description: 'Monitor My Server', href: 'https://prometheus.kurok1.top', icon: SiPrometheus, target: '_blank' },
-    { name: 'Nacos', description: 'My Local Nacos Server', href: 'https://nacos.kurok1.top', icon: SiServerfault, target: '_blank'  }
+    { name: 'Nacos', description: 'My Local Nacos Server', href: 'https://nacos.kurok1.top', icon: SiServerfault, target: '_blank'  },
+    { name: 'IT-Tools', description: 'IT-Tools', href: 'https://tools.kurok1.top', icon: SiTextpattern, target: '_blank'}
 ]
 
 
